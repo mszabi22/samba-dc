@@ -1,4 +1,6 @@
 #!/bin/bash
-samba-tool dns zonecreate localhost {domain.hu} -U Administrator
+DOMAIN="domain.com"
+
+samba-tool dns zonecreate localhost $DOMAIN -U Administrator
 samba-tool dns zonelist localhost -U Administrator
 
