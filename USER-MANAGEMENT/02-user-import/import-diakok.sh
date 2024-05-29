@@ -12,5 +12,5 @@ echo "Diák szervezeti egységhez adása..."
     samba-tool user move $username "ou=$osztaly,ou=Diákok"
 echo "HOME létrehozása..."
     mkdir -p /home/$username; chmod -R 777 /home/$username;
-    echo "$group,$username,$JELSZO" >> /home/$USER/new-worker.csv
+    echo "$group,$username,$JELSZO" >> /home/pingvin/new-worker.csv
 done < diakok.csv
