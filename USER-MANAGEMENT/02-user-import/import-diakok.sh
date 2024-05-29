@@ -4,7 +4,7 @@ do
 #	JELSZO=`pwgen 8 1`
     JELSZO=$password
 clear
-echo "Diák hozzáadása..."
+echo "$osztaly - $surname $givenname diák hozzáadása..."
     samba-tool user create --must-change-at-next-login --script-path="diak.cmd" --surname="$surname" --given-name="$givenname" --mail-address="$username@diak.crnl.hu" $username $JELSZO
 echo "Diák csoporthoz adása..."
     samba-tool group addmembers diak $username;
