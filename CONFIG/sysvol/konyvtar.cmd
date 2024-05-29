@@ -1,3 +1,4 @@
-net use u: \\10.0.0.240\home\tanar\%USERNAME%
-net use t: \\10.0.0.240\Konyvtar
-net time \\10.0.0.240 /set /yes
+net use u: \\zentyal\%USERNAME%
+net use t: \\zentyal\tanar
+net use k: \\zentyal\konyvtar
+
