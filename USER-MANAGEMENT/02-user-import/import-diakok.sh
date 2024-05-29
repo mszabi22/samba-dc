@@ -8,6 +8,7 @@ echo "Diák hozzáadása..."
     samba-tool user create --must-change-at-next-login --script-path="diak.cmd" --surname="$surname" --given-name="$givenname" --mail-address="$username@diak.crnl.hu" $username $JELSZO
 echo "Diák csoporthoz adása..."
     samba-tool group addmembers diak $username;
+    samba-tool group addmembers diak $osztaly;
 echo "Diák szervezeti egységhez adása..."
     samba-tool user move $username "ou=$osztaly,ou=Diákok"
 echo "HOME létrehozása..."
