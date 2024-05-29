@@ -7,11 +7,13 @@ for i in `cat osztalyok.csv`; do
 done
 
 echo "Egyéb csoportok létrehozása..."
-samba-tool group add dolgozok
-samba-tool group add tanarok
-samba-tool group add diakok
+samba-tool group add dolgozo
+samba-tool group add tanar
+samba-tool group add diak
 samba-tool group add gazdasagi
 samba-tool group add titkarsag
 samba-tool group add stuff
+samba-tool group add kollegium
+samba-tool group add hallgato
 
 samba-tool group list | sort
