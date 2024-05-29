@@ -14,4 +14,4 @@ echo "Hallgató szervezeti egységhez adása..."
 echo "HOME létrehozása..."
     mkdir -p /home/$username; chmod -R 777 /home/$username;
     echo "$group,$username,$JELSZO" >> /home/pingvin/new-worker.csv
-done < gazdasagi.csv
+done < hallgatok.csv
