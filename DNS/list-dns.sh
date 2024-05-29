@@ -1,2 +1,4 @@
 #!/bin/bash
-samba-tool dns query 10.0.0.253 domain.com @ ALL -U administrator
+DOMAIN="domain.com"
+
+samba-tool dns query localhost $DOMAIN @ ALL -U administrator

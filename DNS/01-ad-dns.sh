@@ -1,6 +1,7 @@
 #!/bin/bash
-#samba-tool dns add localhost {localhost.hu} {name} A {IP}
-
-samba-tool dns add 10.0.0.253 domain.com $1 A $2 -U administrator
-samba-tool dns query 10.0.0.253 domain.com @ ALL -U administrator
+DOMAIN="domain.com"
+NAME=""
+IP=""
+samba-tool dns add localhost $DOMAIN $NAME A $IP -U administrator
+samba-tool dns query localhost $DOMAIN @ ALL -U administrator
 
