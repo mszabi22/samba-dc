@@ -1,0 +1,15 @@
+#!/bin/bash
+
+IFS=,
+while read group username password surname givenname
+      do
+    if [ `samba-tool group list | grep "$group" | wc -l` = 1 ]; then
+#        JELSZO=`pwgen 8 1`
+	JELSZO=$password
+	samba-tool user create --must-change-at-next-login --script-path="diak.cmd" --surname="$surname" --given-name="$givenname" --mail-address="$username@diak.domain.com"  $username $JELSZO
+	samba-tool group addmembers $group $username;
+	samba-tool user move $username "ou=$group,ou=Diákok"
+	mkdir -p /share/home/diak/$username; chmod -R 777 /share/home/diak/$username;
+	echo "$group,$username,$JELSZO" >> /home/$USER/new-student.csv
+    fi
+done < $1
