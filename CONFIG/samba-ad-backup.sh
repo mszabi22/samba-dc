@@ -1,4 +1,4 @@
 #!/bin/bash
 
-samba-tool domain backup online --targetdir=/etc/scripts/DC/BACKUP/ --server=localhost -UAdministrator
+samba-tool domain backup online --targetdir=~/BACKUP/ --server=localhost -UAdministrator
 
