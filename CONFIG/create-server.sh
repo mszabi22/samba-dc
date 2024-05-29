@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#apt install mc samba smbclient krb5-user krb5-config winbind libpam-winbind libnss-winbind 
+apt install mc samba smbclient krb5-user krb5-config winbind libpam-winbind libnss-winbind 
 mv /etc/samba/smb.conf /etc/samba/smb.conf.bak
 samba-tool domain provision
 
