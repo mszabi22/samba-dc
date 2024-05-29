@@ -7,7 +7,7 @@ clear
 echo "$surname $givenname kollégiumi dolgozó hozzáadása..."
     samba-tool user create --must-change-at-next-login --script-path="kollegium.cmd" --surname="$surname" --given-name="$givenname" --mail-address="$username@crnl.hu" $username $JELSZO
 echo "Kollégiumi dolgozó csoporthoz adása..."
-    samba-tool group addmembers titkarsag $username;
+    samba-tool group addmembers kollegium $username;
 echo "Kollégiumi dolgozó szervezeti egységhez adása..."
     samba-tool user move $username "ou=Kollégium,ou=Dolgozók"
 echo "HOME létrehozása..."
