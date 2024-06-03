@@ -1,2 +1,2 @@
 net use u: \\zentyal\%USERNAME%
-net use m: \\zentyal\gazdasagi
+net use z: \\zentyal\gazdasagi
