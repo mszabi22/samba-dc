@@ -4,7 +4,7 @@ YEAR="2024"
 
 
 clear
-echo "Előző évi csoportok átnevezése..."
+echo "Előző évi szervezeti egységek átnevezése..."
 for j in `cat osztalyok1.csv`; do
 EVFOLYAM=`echo "$YEAR-$j" | cut -c 6`
 BETUJEL=`echo "$YEAR-$j" | cut -c 7`
