@@ -1,0 +1,3 @@
+Évváltás.
+
+NINCS KÉSZ!
