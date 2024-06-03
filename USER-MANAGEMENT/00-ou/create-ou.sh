@@ -6,7 +6,7 @@ samba-tool ou create OU=Gazdasági,OU=Dolgozók
 samba-tool ou create OU=Hallgatók,OU=Dolgozók
 samba-tool ou create OU=Kollégium,OU=Dolgozók
 samba-tool ou create OU=Könyvtár,OU=Dolgozók
-samba-tool ou create OU=Stuff,OU=Dolgozók
+samba-tool ou create OU=Staff,OU=Dolgozók
 samba-tool ou create OU=Tanárok,OU=Dolgozók
 samba-tool ou create OU=Technikai,OU=Dolgozók
 samba-tool ou create OU=Titkárság,OU=Dolgozók

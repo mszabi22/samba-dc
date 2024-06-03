@@ -13,7 +13,7 @@ samba-tool group add gazdasagi
 samba-tool group add hallgato
 samba-tool group add kollegium
 samba-tool group add konyvtar
-samba-tool group add stuff
+samba-tool group add staff
 samba-tool group add tanar
 samba-tool group add titkarsag
 
