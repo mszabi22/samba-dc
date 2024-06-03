@@ -1,5 +1,5 @@
 #!/bin/bash
-JELSZO="jelszo"
+JELSZO=$1
 DOMAIN="domain.com"
 
 while IFS=, read -r domain name ip
