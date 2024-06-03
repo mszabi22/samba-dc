@@ -1,4 +1,5 @@
 #!/bin/bash
+YEAR="2024"
 
 samba-tool ou create OU=Diákok
 samba-tool ou create OU=Dolgozók
@@ -13,7 +14,7 @@ samba-tool ou create OU=Titkárság,OU=Dolgozók
 
 echo "Osztály csoportok létrehozása az aktuális évre..."
 for i in `cat osztalyok.csv`; do
-    samba-tool ou create OU=2023-$i,OU=Diákok
+    samba-tool ou create OU=$YEAR-$i,OU=Diákok
 done
 
 samba-tool ou list | sort
