@@ -1,5 +1,12 @@
 #!/bin/bash
-QUOTA="2G"
+QUOTA="0"
 
 setquota -u $1 $QUOTA $QUOTA 0 0 /home
-quota -vs $1
+setquota -u $1 $QUOTA $QUOTA 0 0 /dev/mapper/ubuntu--vg-ubuntu--lv
+
+echo "/home: "
+sudo repquota -vs /home  | grep $1
+echo ""
+echo "/dev/mapper/ubuntu--vg-ubuntu--lv: "
+sudo repquota -vs /dev/mapper/ubuntu--vg-ubuntu--lv  | grep $1
+echo ""
