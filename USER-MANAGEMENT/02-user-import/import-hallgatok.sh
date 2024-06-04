@@ -1,4 +1,6 @@
 #!/bin/bash
+DOMAIN="domain"
+
 while IFS=, read -r username password surname givenname
 do
 #	JELSZO=`pwgen 8 1`
@@ -13,5 +15,7 @@ echo "Hallgató szervezeti egységhez adása..."
     samba-tool user move $username "ou=Hallgatók,ou=Dolgozók"
 echo "HOME létrehozása..."
     mkdir -p /home/$username; chmod -R 777 /home/$username;
+    chown -R "$username:$DOMAIN\domain users" /home/$username
+
     echo "$group,$username,$JELSZO" >> /home/pingvin/new-worker.csv
 done < hallgatok.csv
