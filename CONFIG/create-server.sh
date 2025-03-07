@@ -16,5 +16,5 @@ samba-tool domain level show
 samba-tool domain passwordsettings set --history-length=3 --min-pwd-age=0 --min-pwd-length=8 --max-pwd-age=180 --account-lockout-duration=5 --complexity=off
 samba-tool domain passwordsettings show
 
-echo "Download RSAT for Windows: https://www.microsoft.com/hu-hu/download/details.aspx?id=45520"
+echo "Download RSAT for Windows: https://techcommunity.microsoft.com/discussions/windows11/how-to-install-or-uninstall-rsat-in-windows-11/3273590"
 
