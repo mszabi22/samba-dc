@@ -21,33 +21,32 @@ make -j$(nproc)\
 make install\
 
 **SAMBA útvonalak beállítása:**\
-echo 'export PATH=/usr/local/samba/bin:/usr/local/samba/sbin:$PATH' >> ~/.bashrc\
+echo 'export PATH=/usr/local/samba/bin:/usr/local/samba/sbin:$PATH' >> ~/.bashrc
 
 source ~/.bashrc\
 samba --version\
 
 **SAMBA beállítása, mint Domain Controller server:**\
-samba-tool domain provision --use-rfc2307 --interactive\
+samba-tool domain provision --use-rfc2307 --interactive
 
-cp /usr/local/samba/var/lib/samba/private/krb5.conf /etc/krb5.conf\
+cp /usr/local/samba/var/lib/samba/private/krb5.conf /etc/krb5.conf
 
 **SAMBA szolgáltatás engedélyezése:**\
 echo "[Unit]\
 Description=Samba AD DC\
-After=network.target\
+After=network.target
 
 [Service]\
 Type=forking\
 ExecStart=/usr/local/samba/sbin/samba\
 ExecReload=/bin/kill -HUP $MAINPID\
-LimitNOFILE=16384\
+LimitNOFILE=16384
 
 [Install]\
-WantedBy=multi-user.target\
-" > /etc/systemd/system/samba.service\
+WantedBy=multi-user.target" > /etc/systemd/system/samba.service\
 systemctl daemon-reload\
-systemctl enable --now samba\
+systemctl enable --now samba
 
 
-Ezután beléptethetjük a Windows-os/Linux-os klienseket a tartományba. DC kezeléséhez szükséges scriptek megtalálhatóak a repóba.\
+Ezután beléptethetjük a Windows-os/Linux-os klienseket a tartományba. DC kezeléséhez szükséges scriptek megtalálhatóak a repóba.
 
