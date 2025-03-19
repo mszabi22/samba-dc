@@ -1,1 +1,0 @@
-Csoportok létrehozása.

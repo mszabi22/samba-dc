@@ -1,1 +1,0 @@
-Szervezeti egységek létrehozása.
