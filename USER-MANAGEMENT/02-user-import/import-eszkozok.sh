@@ -16,5 +16,5 @@ echo "Eszkozök dolgozó csoporthoz adása..."
 
 echo "Eszközök dolgozó szervezeti egységhez adása..."
     samba-tool user move $username "ou=Eszközök,ou=Dolgozók"
-    echo "$group,$username,$JELSZO" >> /home/majorsza/new-worker.csv
+    echo "$group,$username,$JELSZO" >> new-worker.csv
 done < eszkozok.csv

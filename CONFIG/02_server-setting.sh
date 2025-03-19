@@ -12,11 +12,10 @@ systemctl stop samba;systemctl start samba
 
 echo "SAMBA Domain Controller jelszóházirend beállítása..."
 samba-tool domain passwordsettings set --history-length=1 --min-pwd-age=0 --min-pwd-length=8 --max-pwd-age=365 --account-lockout-duration=5 --complexity=off
+
 #samba-tool domain passwordsettings show
 
-echo "
-Install RSAT for Windows via PowerShell: 
+echo "Install RSAT for Windows via PowerShell: 
 Add-WindowsCapability -Online -Name Rsat.ActiveDirectory.DS-LDS.Tools
-Add-WindowsCapability -Online -Name Rsat.Dns.Tools~~~~0.0.1.0
-"
+Add-WindowsCapability -Online -Name Rsat.Dns.Tools~~~~0.0.1.0"
 

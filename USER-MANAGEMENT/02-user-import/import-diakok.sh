@@ -6,7 +6,7 @@ do
 #	JELSZO=`pwgen 8 1`
     JELSZO=$password
 echo "$osztaly - $surname $givenname diák hozzáadása..."
-    samba-tool user create --must-change-at-next-login --script-path="diak.cmd" --surname="$surname" --given-name="$givenname" --mail-address="$username@diak.crnl.hu" --department="$osztaly" $username $JELSZO
+    samba-tool user create --must-change-at-next-login --script-path="diak.cmd" --surname="$surname" --given-name="$givenname" --mail-address="$username@diak.domain.hu" --department="$osztaly" $username $JELSZO
     
     adduser --no-create-home --shell /usr/sbin/nologin $username
     usermod -g diak $username
@@ -22,5 +22,5 @@ echo "HOME létrehozása..."
     mkdir -p /share/home/diak/$username; chmod -R 777 /share/home/diak/$username;
     chown -R "$username:diak" /share/home/diak/$username
 
-    echo "$group,$username,$JELSZO" >> /home/majorsza/new-worker.csv
+    echo "$group,$username,$JELSZO" >> new-worker.csv
 done < diakok.csv

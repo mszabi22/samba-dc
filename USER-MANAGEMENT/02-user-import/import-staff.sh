@@ -6,7 +6,7 @@ do
 #	JELSZO=`pwgen 8 1`
     JELSZO=$password
 echo "$surname $givenname hozzáadása..."
-    samba-tool user create --script-path="staff.cmd" --surname="$surname" --given-name="$givenname" --mail-address="$username@crnl.hu" $username $JELSZO
+    samba-tool user create --script-path="staff.cmd" --surname="$surname" --given-name="$givenname" --mail-address="$username@domain.hu" $username $JELSZO
 
     adduser --no-create-home --shell /usr/bin/bash $username
     usermod -g tanar -G staff $username
@@ -23,5 +23,5 @@ echo "HOME létrehozása..."
     mkdir -p /share/home/tanar/$username; chmod -R 777 /share/home/tanar/$username;
     chown -R "$username:tanar" /share/home/tanar/$username
 
-    echo "$group,$username,$JELSZO" >> /home/majorsza/new-worker.csv
+    echo "$group,$username,$JELSZO" >> new-worker.csv
 done < staff.csv
