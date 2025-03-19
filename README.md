@@ -1,8 +1,8 @@
-**SAMBA Domain Controller telepítése Rocky Linux alatt:**
-
-dnf install epel-release.noarch dnf-plugins-core -y
-dnf -y groupinstall 'Development Tools'
-dnf config-manager --set-enabled crb
+**SAMBA Domain Controller telepítése Rocky Linux alatt:**\
+\
+dnf install epel-release.noarch dnf-plugins-core -y\
+dnf -y groupinstall 'Development Tools'\
+dnf config-manager --set-enabled crb\
 
 **Függőségek telepítése:**
 dnf install -y docbook-style-xsl gcc gdb gnutls-devel gpgme-devel jansson-devel \
