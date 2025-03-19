@@ -1,0 +1,4 @@
+#!/bin/bash
+
+samba-tool user setpassword $1
+samba-tool domain passwordsettings show
