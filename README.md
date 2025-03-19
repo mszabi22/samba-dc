@@ -1,4 +1,4 @@
-**SAMBA Domain Controller telepítése Rocky Linux alatt:**\
+<ins>**SAMBA Domain Controller telepítése Rocky Linux alatt:**</ins>\
 \
 dnf install epel-release.noarch dnf-plugins-core -y\
 dnf -y groupinstall 'Development Tools'\
