@@ -11,10 +11,10 @@ dnf install -y docbook-style-xsl gcc gdb gnutls-devel gpgme-devel jansson-devel 
 cd /usr/src \
 wget https://download.samba.org/pub/samba/samba-latest.tar.gz \
 tar xvf samba-latest.tar.gz; rm samba-latest.tar.gz \
-cd samba-4.22.0/ \
+cd samba-4.22.0/
 
-**SAMBA konfigurálása:**\
-./configure --enable-debug --enable-selftest --enable-fhs --with-system-mitkrb5 --with-experimental-mit-ad-dc\
+**SAMBA konfigurálása:**
+./configure --enable-debug --enable-selftest --enable-fhs --with-system-mitkrb5 --with-experimental-mit-ad-dc
 
 **SAMBA lefordítása:**\
 make -j$(nproc)\
