@@ -27,7 +27,7 @@ SAMBA lefordítása:
 make -j$(nproc)
 make install
 
-SAMBA utvonalak beallitasa:
+SAMBA útvonalak beállítása:
 echo 'export PATH=/usr/local/samba/bin:/usr/local/samba/sbin:$PATH' >> ~/.bashrc
 
 source ~/.bashrc
@@ -56,5 +56,5 @@ systemctl daemon-reload
 systemctl enable --now samba
 
 
-
+Ezután beléptethetjük a Windows-os/Linux-os klienseket a tartományba. DC kezeléséhez szükséges scriptek megtalálhatóak a repóba.
 
