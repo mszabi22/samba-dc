@@ -11,6 +11,7 @@ samba-tool group listmembers $YEAR-12E >> delete-users.csv
 
 for i in `cat delete-users.csv`; do
     samba-tool user delete $i
+    userdel $i
 echo "Mentés készítése..."
     tar czvf /share/home/BACKUP/DIAK-$TORLESDATUMA-$i.tar.gz /share/home/diak/$i
 echo "$i mappájának törlése..."
