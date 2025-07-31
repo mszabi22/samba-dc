@@ -6,7 +6,7 @@ do
 #	JELSZO=`pwgen 8 1`
     JELSZO=$password
 echo "$surname $givenname technikai dolgozó hozzáadása..."
-    samba-tool user create --must-change-at-next-login --surname="$surname" --given-name="$givenname" --mail-address="$username@domain.hu" --department="Technikai" $username $JELSZO
+    samba-tool user create --surname="$surname" --given-name="$givenname" --mail-address="$username@domain.hu" --department="Technikai" $username $JELSZO
 
     adduser --no-create-home --shell /usr/sbin/nologin $username
     usermod -g tanar -G technikai $username
