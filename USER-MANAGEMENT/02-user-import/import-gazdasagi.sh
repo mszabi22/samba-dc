@@ -3,8 +3,8 @@ DOMAIN="domain"
 
 while IFS=, read -r username password surname givenname
 do
-#	JELSZO=`pwgen 8 1`
-    JELSZO=$password
+#JELSZO=`pwgen 8 1`
+JELSZO=$password
 echo "$surname $givenname gazdasági dolgozó hozzáadása..."
     samba-tool user create --script-path="gazdasagi.cmd" --surname="$surname" --given-name="$givenname" --mail-address="$username@domain.hu" $username $JELSZO
 
