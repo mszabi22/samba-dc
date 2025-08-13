@@ -2,5 +2,7 @@
     --backup-file=BACKUP/samba-backup-2025-08-13.tar.bz2 \
     --targetdir=/usr/local/samba \
     --newservername=samba-dc \
-    --realm=SAMBA.CRNL.LAN \
+    --realm=SAMBA.DOMAIN.LAN \
     --domain=SAMBA
+
+chown -R root:root /usr/local/samba
