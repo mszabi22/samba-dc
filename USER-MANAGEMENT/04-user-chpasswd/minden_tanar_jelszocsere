@@ -6,6 +6,7 @@ for FELHASZNALONEV in `cat jelszocsere_tanar.csv`; do
 JELSZO=`pwgen -B -s 8 1 -1 -0 -c -v`
 samba-tool user setpassword $FELHASZNALONEV --newpassword=$JELSZO
 echo "$FELHASZNALONEV;$JELSZO" >> tanar_jelszavak.txt
+
 (
 echo "Subject: [CNK] Új Windows jelszó"
 echo "From: noreply@cnkpecs.hu"
@@ -21,5 +22,7 @@ echo "Üdvözlettel:"
 echo "Szabolcs"
 
 ) | msmtp $FELHASZNALONEV@szentmargitpecs.hu
+
+sleep 5
 
 done
