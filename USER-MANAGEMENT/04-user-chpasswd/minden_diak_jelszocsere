@@ -1,25 +1,25 @@
 #!/bin/bash
 clear
-
-for FELHASZNALONEV in `cat jelszocsere_tanar.csv`; do
+for FELHASZNALONEV in `cat jelszocsere_diak.csv`; do
 
 JELSZO=`pwgen -B -s 8 1 -1 -0 -c -v`
 samba-tool user setpassword $FELHASZNALONEV --newpassword=$JELSZO
-echo "$FELHASZNALONEV;$JELSZO" >> tanar_jelszavak.txt
+echo "$FELHASZNALONEV;$JELSZO" >> diak_jelszavak.txt
+
 (
 echo "Subject: [CNK] Új Windows jelszó"
 echo "From: noreply@cnkpecs.hu"
 echo ""
-echo "Kedves Kolléga!"
+echo "Kedves Diákunk!"
 echo ""
-echo "Számítógépekhez, valamint a WIFI-hez használt jelszavad megváltozott."
+echo "Számítógépekhez használt jelszavad megváltozott."
 echo ""
 echo "Felhasználói név: $FELHASZNALONEV"
 echo "Új jelszó: $JELSZO"
 echo ""
 echo "Üdvözlettel:"
-echo "Szabolcs"
+echo "rendszergazda"
 
-) | msmtp $FELHASZNALONEV@szentmargitpecs.hu
+) | msmtp $FELHASZNALONEV@diak.cnkpecs.hu
 
 done
