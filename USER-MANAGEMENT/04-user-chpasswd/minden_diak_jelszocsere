@@ -22,6 +22,6 @@ echo "rendszergazda"
 
 ) | msmtp $FELHASZNALONEV@diak.cnkpecs.hu
 
-sleepy 5
+sleep 5
 
 done
