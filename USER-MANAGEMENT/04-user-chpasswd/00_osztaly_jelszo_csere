@@ -1,0 +1,12 @@
+#!/bin/bash
+clear
+samba-tool group list | grep 2025 | sort
+echo "Melyik osztály? (pl.: 2024-7A)"
+read OSZTALY
+
+for FELHASZNALONEV in `samba-tool group listmembers $OSZTALY | sort`; do
+
+JELSZO="Tavasz123"
+samba-tool user setpassword $FELHASZNALONEV --newpassword=$JELSZO
+
+done
