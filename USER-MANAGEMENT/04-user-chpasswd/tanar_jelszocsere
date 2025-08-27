@@ -1,0 +1,24 @@
+#!/bin/bash
+clear
+/usr/local/samba/bin/samba-tool group listmembers tanar | sort
+echo "Felhasználói név?"
+read FELHASZNALONEV
+
+
+JELSZO=`pwgen -B -s 8 1 -1 -0 -c -v`
+/usr/local/samba/bin/samba-tool user setpassword $FELHASZNALONEV --newpassword=$JELSZO
+(
+echo "Kedves Kolléga!"
+echo ""
+echo "Számítógépekhez, valamint a WIFI-hez használt jelszavad megváltozott."
+echo ""
+echo "Felhasználói név: $FELHASZNALONEV"
+echo "Új jelszó: $JELSZO"
+echo ""
+echo "Üdvözlettel:"
+echo "Szabolcs"
+
+) | mail -s "[CRNL] Új Windows jelszó" -b mszabi@crnl.hu $FELHASZNALONEV@crnl.hu
+
+
+

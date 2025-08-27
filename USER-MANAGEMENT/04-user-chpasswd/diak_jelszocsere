@@ -1,0 +1,24 @@
+#!/bin/bash
+clear
+echo "Melyik osztály? (pl.: 2025-7A)"
+read OSZTALY
+/usr/local/samba/bin/samba-tool group listmembers $OSZTALY | sort
+echo "Felhasználói név?"
+read FELHASZNALONEV
+
+#JELSZO=`pwgen -B -s 8 1 -1 -0 -c -v`
+JELSZO="Tavasz123"
+
+/usr/local/samba/bin/samba-tool user setpassword $FELHASZNALONEV --newpassword=$JELSZO
+(
+echo "Kedves Diákunk!"
+echo ""
+echo "Számítógépekhez és wifi-hez használt jelszavad megváltozott."
+echo ""
+echo "Felhasználói név: $FELHASZNALONEV"
+echo "Új jelszó: $JELSZO"
+echo ""
+echo "Üdvözlettel:"
+echo "rendszergazda"
+) | mail -s "[CRNL] Új Windows jelszó" -b mszabi@crnl.hu $FELHASZNALONEV@diak.crnl.hu
+

@@ -1,16 +1,13 @@
 #!/bin/bash
 clear
-samba-tool group listmembers tanar | sort
+/usr/local/samba/bin/samba-tool group listmembers titkarsag | sort
 echo "Felhasználói név?"
 read FELHASZNALONEV
 
 
 JELSZO=`pwgen -B -s 8 1 -1 -0 -c -v`
-samba-tool user setpassword $FELHASZNALONEV --newpassword=$JELSZO
+/usr/local/samba/bin/samba-tool user setpassword $FELHASZNALONEV --newpassword=$JELSZO
 (
-echo "Subject: [CNK] Új Windows jelszó"
-echo "From: noreply@cnkpecs.hu"
-echo ""
 echo "Kedves Kolléga!"
 echo ""
 echo "Számítógépekhez, valamint a WIFI-hez használt jelszavad megváltozott."
@@ -21,5 +18,7 @@ echo ""
 echo "Üdvözlettel:"
 echo "Szabolcs"
 
-) | msmtp $FELHASZNALONEV@szentmargitpecs.hu
+) | mail -s "[CRNL] Új Windows jelszó" -b mszabi@crnl.hu $FELHASZNALONEV@crnl.hu
+
+
 

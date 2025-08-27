@@ -4,15 +4,13 @@ for FELHASZNALONEV in `cat jelszocsere_diak.csv`; do
 
 JELSZO=`pwgen -B -s 8 1 -1 -0 -c -v`
 samba-tool user setpassword $FELHASZNALONEV --newpassword=$JELSZO
+
 echo "$FELHASZNALONEV;$JELSZO" >> diak_jelszavak.txt
 
 (
-echo "Subject: [CNK] Új Windows jelszó"
-echo "From: noreply@cnkpecs.hu"
-echo ""
 echo "Kedves Diákunk!"
 echo ""
-echo "Számítógépekhez használt jelszavad megváltozott."
+echo "Számítógépekhez és a wifi-hez használt jelszavad megváltozott."
 echo ""
 echo "Felhasználói név: $FELHASZNALONEV"
 echo "Új jelszó: $JELSZO"
@@ -20,7 +18,7 @@ echo ""
 echo "Üdvözlettel:"
 echo "rendszergazda"
 
-) | msmtp $FELHASZNALONEV@diak.cnkpecs.hu
+) | mail -s "[CRNL] Új Windows jelszó" $FELHASZNALONEV@diak.crnl.hu 
 
 sleep 5
 
