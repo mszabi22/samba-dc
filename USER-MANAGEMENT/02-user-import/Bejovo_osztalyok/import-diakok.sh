@@ -3,10 +3,10 @@ DOMAIN="domain"
 
 while IFS=, read -r osztaly username password surname givenname
 do
-JELSZO=`pwgen 8 1`
-#    JELSZO=$password
+#JELSZO=`pwgen 8 1`
+JELSZO=$password
 echo "$osztaly - $surname $givenname diák hozzáadása..."
-    samba-tool user create --script-path="diak.cmd" --surname="$surname" --given-name="$givenname" --mail-address="$username@diak.crnl.hu" --department="$osztaly" $username $JELSZO
+    samba-tool user create --script-path="diak.cmd" --surname="$surname" --given-name="$givenname" --mail-address="$username@diak.domain.hu" --department="$osztaly" $username $JELSZO
     
     adduser --no-create-home --shell /usr/sbin/nologin $username
     usermod -g diak $username
@@ -20,14 +20,11 @@ echo "Diák szervezeti egységhez adása..."
 
 echo "HOME létrehozása..."
     mkdir -p /share/home/diak/$username; chmod -R 777 /share/home/diak/$username;
-    chown -R "$username:diak" /share/home/diak/$username
+    chown -R "root:root" /share/home/diak/$username
 
     echo "$group,$username,$JELSZO" >> bejovo_osztaly_jelszavak.csv
 
 (
-echo "Subject: [CRNL] Windows jelszó"
-echo "From: noreply@crnl.hu"
-echo ""
 echo "Kedves Diákunk!"
 echo ""
 echo "Számítógépes belépésekhez és wifi-hez használható jelszavad:"
@@ -35,12 +32,14 @@ echo ""
 echo "Felhasználói név: $username"
 echo "Új jelszó: $JELSZO"
 echo ""
+echo "Informatikai szabályzat a https://szabalyzat.domain.hu oldalon olvasható el."
+echo ""
 echo "Üdvözlettel:"
 echo "Major Szabolcs"
 echo "rendszergazda"
 echo ""
-) | msmtp $username@diak.crnl.hu
+) | mail -s "[CRNL] Windows jelszó" $username@diak.domain.hu 
 
-sleep 5
+sleep 1
 
 done < diakok.csv
