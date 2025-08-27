@@ -19,7 +19,7 @@ echo "Új jelszó: $JELSZO"
 echo ""
 echo "Üdvözlettel:"
 echo "rendszergazda"
-) | mail -s "[CRNL] Új Windows jelszó" $FELHASZNALONEV@diak.crnl.hu
+) | mail -s "[CRNL] Új Windows jelszó" $FELHASZNALONEV@diak.domain.hu
 
 sleep 1
 

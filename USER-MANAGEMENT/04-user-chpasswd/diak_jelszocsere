@@ -20,5 +20,5 @@ echo "Új jelszó: $JELSZO"
 echo ""
 echo "Üdvözlettel:"
 echo "rendszergazda"
-) | mail -s "[CRNL] Új Windows jelszó" -b mszabi@crnl.hu $FELHASZNALONEV@diak.crnl.hu
+) | mail -s "[CRNL] Új Windows jelszó" -b mszabi@domain.hu $FELHASZNALONEV@diak.domain.hu
 
