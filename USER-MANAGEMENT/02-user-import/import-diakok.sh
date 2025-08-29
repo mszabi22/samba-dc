@@ -20,7 +20,7 @@ echo "Diák szervezeti egységhez adása..."
 
 echo "HOME létrehozása..."
     mkdir -p /share/home/diak/$username; chmod -R 777 /share/home/diak/$username;
-    chown -R "$username:diak" /share/home/diak/$username
+    chown -R "root:root" /share/home/diak/$username
 
     echo "$group,$username,$JELSZO" >> new-worker.csv
     

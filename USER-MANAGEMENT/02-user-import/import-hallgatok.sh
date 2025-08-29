@@ -20,7 +20,7 @@ echo "Hallgató szervezeti egységhez adása..."
 
 echo "HOME létrehozása..."
     mkdir -p /share/home/tanar/$username; chmod -R 777 /share/home/tanar/$username;
-    chown -R "$username:tanar" /share/home/tanar/$username
+    chown -R "root:root" /share/home/tanar/$username
 
     echo "$group,$username,$JELSZO" >> new-worker.csv
     
