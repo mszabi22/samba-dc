@@ -49,7 +49,6 @@ echo ""
 echo "Informatikai szabályzat a https://szabalyzat.domain.hu oldalon olvasható el."
 echo ""
 echo "Üdvözlettel:"
-echo "Major Szabolcs"
 echo "rendszergazda"
 echo ""
 ) | mail -s "Windows jelszó" $username@diak.domain.hu 
