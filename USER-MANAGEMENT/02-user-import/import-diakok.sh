@@ -23,4 +23,23 @@ echo "HOME létrehozása..."
     chown -R "$username:diak" /share/home/diak/$username
 
     echo "$group,$username,$JELSZO" >> new-worker.csv
+    
+(
+echo "Kedves Diákunk!"
+echo ""
+echo "Számítógépes belépésekhez és wifi-hez használható jelszavad:"
+echo ""
+echo "Felhasználói név: $username"
+echo "Új jelszó: $JELSZO"
+echo ""
+echo "Informatikai szabályzat a https://szabalyzat.domain.hu oldalon olvasható el."
+echo ""
+echo "Üdvözlettel:"
+echo "Major Szabolcs"
+echo "rendszergazda"
+echo ""
+) | mail -s "Windows jelszó" $username@diak.domain.hu 
+
+sleep 1     
+    
 done < diakok.csv

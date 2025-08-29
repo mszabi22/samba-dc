@@ -22,4 +22,22 @@ echo "HOME létrehozása..."
     chown -R "$username:tanar" /share/home/tanar/$username
 
     echo "$group,$username,$JELSZO" >> new-worker.csv
+    
+(
+echo "Kedves $givenname!"
+echo ""
+echo "Számítógépes belépésekhez és wifi-hez használható jelszavad:"
+echo ""
+echo "Felhasználói név: $username"
+echo "Új jelszó: $JELSZO"
+echo ""
+echo "Informatikai szabályzat a https://szabalyzat.domain.hu oldalon olvasható el."
+echo ""
+echo "Üdvözlettel:"
+echo "rendszergazda"
+echo ""
+) | mail -s "Windows jelszó" $username@domain.hu 
+    
+sleep 1    
+    
 done < titkarsag.csv
