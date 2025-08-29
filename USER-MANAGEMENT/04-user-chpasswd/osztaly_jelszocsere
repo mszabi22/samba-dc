@@ -1,8 +1,18 @@
 #!/bin/bash
 clear
 /usr/local/samba/bin/samba-tool group list | grep 2025 | sort
-echo "Melyik osztály? (pl.: 2025-7A)"
-read OSZTALY
+while true; do
+    echo -n "Melyik osztály? (pl.: 2025-7A) "
+    read OSZTALY
+
+    if [ -z "$OSZTALY" ]; then
+        echo "Hiba: az osztály megadása kötelező. Próbáld újra."
+    else
+        break
+    fi
+done
+
+echo "Megadott osztály: $OSZTALY"
 
 for FELHASZNALONEV in `/usr/local/samba/bin/samba-tool group listmembers $OSZTALY | sort`; do
 
