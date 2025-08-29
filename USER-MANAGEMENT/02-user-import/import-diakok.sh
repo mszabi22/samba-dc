@@ -5,6 +5,20 @@ while IFS=, read -r osztaly username password surname givenname
 do
 #JELSZO=`pwgen 8 1`
 JELSZO=$password
+
+# Ellenőrzés + inkrementálás
+    base_username="$username"
+    i=0
+    while true; do
+        if samba-tool user show "$username" >/dev/null 2>&1 || id "$username" >/dev/null 2>&1; then
+            i=$((i+1))
+            username="${base_username}${i}"
+        else
+            break
+        fi
+    done
+###
+
 echo "$osztaly - $surname $givenname diák hozzáadása..."
     samba-tool user create --script-path="diak.cmd" --surname="$surname" --given-name="$givenname" --mail-address="$username@diak.domain.hu" --department="$osztaly" $username $JELSZO
     

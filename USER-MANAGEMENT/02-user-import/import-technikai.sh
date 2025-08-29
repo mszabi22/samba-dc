@@ -5,6 +5,20 @@ while IFS=, read -r username password surname givenname
 do
 #	JELSZO=`pwgen 8 1`
     JELSZO=$password
+
+# Ellenőrzés + inkrementálás
+    base_username="$username"
+    i=0
+    while true; do
+        if samba-tool user show "$username" >/dev/null 2>&1 || id "$username" >/dev/null 2>&1; then
+            i=$((i+1))
+            username="${base_username}${i}"
+        else
+            break
+        fi
+    done
+###
+
 echo "$surname $givenname technikai dolgozó hozzáadása..."
     samba-tool user create --surname="$surname" --given-name="$givenname" --mail-address="$username@domain.hu" --department="Technikai" $username $JELSZO
 
