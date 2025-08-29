@@ -6,14 +6,12 @@ do
 echo "Kedves $givenname!"
 echo ""
 echo "Számítástechnikai – informatikai infrastruktúránk használati szabályzatát ezen a linken éred el:"
-echo "https://szabalyzat.cnkpecs.hu/"
+echo "https://szabalyzat.domain.hu/"
 echo ""
 echo "Üdvözlettel:"
-echo "Major Szabolcs"
 echo "rendszergazda"
-echo "E-mail: major.szabolcs@szentmargitpecs.hu"
 echo ""
-) | mail -s "[CNK] Informatikai szabályzat" $username@szentmargitpecs.hu 
+) | mail -s "Informatikai szabályzat" $username@domain.hu 
 
 sleep 5
     
