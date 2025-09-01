@@ -80,7 +80,7 @@ echo ""
 echo "Üdvözlettel:"
 echo "Szabolcs"
 
-) | mail -s "[CNK] Új Windows jelszó" -b mszabi@crnl.hu $FELHASZNALONEV@szentmargitpecs.hu
+) | mail -s "[CNK] Új Windows jelszó" -b mszabi@domain.hu $FELHASZNALONEV@domain.hu
     
     
 fi
@@ -97,5 +97,5 @@ echo ""
 echo "Üdvözlettel:"
 echo "rendszergazda"
 
-) | mail -s "[CNK] Új Windows jelszó" -b mszabi@crnl.hu $FELHASZNALONEV@diak.cnkpecs.hu
+) | mail -s "[CNK] Új Windows jelszó" -b mszabi@domain.hu $FELHASZNALONEV@diak.domain.hu.hu
 fi
