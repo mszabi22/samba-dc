@@ -1,0 +1,101 @@
+#!/bin/bash
+# Felhasználó keresés és jelszócsere Samba-tool-lal
+clear
+echo -n "Felhasználói név töredék? "
+read FELHASZNALONEVT
+
+if [ -z "$FELHASZNALONEVT" ]; then
+    echo "Hiba: a felhasználói név nem lehet üres."
+    exit 1
+fi
+
+# 1. Keresés és lista kiírás
+echo "=== Találatok ==="
+MATCHED_USERS=()
+while read -r USER; do
+    INFO=$(sudo /usr/local/samba/bin/samba-tool user show "$USER")
+
+    DISPLAYNAME=$(echo "$INFO" | grep -i "^displayName:" | cut -d: -f2- | sed 's/^ //')
+    DN=$(echo "$INFO" | grep -i "^dn:" | cut -d: -f2- | sed 's/^ //')
+
+    OU="N/A"
+    if echo "$DN" | grep -q "OU="; then
+        OU=$(echo "$DN" | grep -o "OU=[^,]*" | head -n1 | cut -d= -f2)
+    fi
+
+    FULL_OU="N/A"
+    if echo "$DN" | grep -q "OU="; then
+        FULL_OU=$(echo "$DN" | sed 's/^[^,]*,//')
+    fi
+
+    PARENT_OU="N/A"
+    if echo "$DN" | grep -q "OU="; then
+        PARENT_OU=$(echo "$DN" | grep -o "OU=[^,]*" | sed -n '2p' | cut -d= -f2)
+    fi
+
+    echo "$PARENT_OU | $OU | $USER | ${DISPLAYNAME:-N/A} | $FULL_OU "
+    MATCHED_USERS+=("$USER")
+done < <(sudo /usr/local/samba/bin/samba-tool user list | grep -i "$FELHASZNALONEVT")
+
+if [ ${#MATCHED_USERS[@]} -eq 0 ]; then
+    echo "Nincs találat."
+    exit 1
+fi
+
+# 2. Kérdés: melyik user?
+echo
+echo -n "Melyik felhasználó nevét választod? "
+read SELECTED_USER
+
+if ! printf '%s\n' "${MATCHED_USERS[@]}" | grep -qx "$SELECTED_USER"; then
+    echo "Hiba: a választott felhasználó nincs a találatok között."
+    exit 1
+fi
+
+
+
+
+# 3. Jelszó generálás és csere
+JELSZO=$(pwgen -B -s 8 1 -1 -0 -c -v)
+echo "Új jelszó generálva: $JELSZO"
+
+sudo /usr/local/samba/bin/samba-tool user setpassword "$SELECTED_USER" --newpassword="$JELSZO"
+
+# 4. OU szerinti logika
+INFO=$(sudo /usr/local/samba/bin/samba-tool user show "$SELECTED_USER")
+DN=$(echo "$INFO" | grep -i "^dn:" | cut -d: -f2- | sed 's/^ //')
+
+OU=$(echo "$DN" | grep -o "OU=[^,]*" | head -n1 | cut -d= -f2)
+PARENT_OU=$(echo "$DN" | grep -o "OU=[^,]*" | sed -n '2p' | cut -d= -f2)
+
+if [[ "$PARENT_OU" == "Dolgozók" || "$OU" == "Dolgozók" ]]; then
+(
+echo "Kedves Kolléga!"
+echo ""
+echo "Számítógépekhez, valamint a WIFI-hez használt jelszavad megváltozott."
+echo ""
+echo "Felhasználói név: $FELHASZNALONEV"
+echo "Új jelszó: $JELSZO"
+echo ""
+echo "Üdvözlettel:"
+echo "Szabolcs"
+
+) | mail -s "[CNK] Új Windows jelszó" -b mszabi@crnl.hu $FELHASZNALONEV@szentmargitpecs.hu
+    
+    
+fi
+
+if [[ "$PARENT_OU" == "Diákok" || "$OU" == "Diákok" ]]; then
+(
+echo "Kedves Diákunk!"
+echo ""
+echo "Számítógépekhez használt jelszavad megváltozott."
+echo ""
+echo "Felhasználói név: $FELHASZNALONEV"
+echo "Új jelszó: $JELSZO"
+echo ""
+echo "Üdvözlettel:"
+echo "rendszergazda"
+
+) | mail -s "[CNK] Új Windows jelszó" -b mszabi@crnl.hu $FELHASZNALONEV@diak.cnkpecs.hu
+fi
