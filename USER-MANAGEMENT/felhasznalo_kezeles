@@ -1,0 +1,41 @@
+#!/bin/bash
+    clear
+
+# Menüpontok nevei, amik megjelennek a felhasználónak
+menu_items=(
+    "Keresés, majd jelszócsere"
+    "Teljes osztály jelszócsere"
+    "Felhasználó áthelyezése másik OU-ba"
+)
+
+# A hozzájuk tartozó fájlok (teljes útvonal is lehet)
+files=(
+    "/etc/scripts/USER-MANAGEMENT/04-user-chpasswd/jelszocsere"
+    "/etc/scripts/USER-MANAGEMENT/04-user-chpasswd/osztaly_jelszocsere"
+    "/etc/scripts/USER-MANAGEMENT/06-user_modify/athelyez.sh"
+)
+
+while true; do
+    echo "Válassz egy menüpontot:"
+    
+    for i in "${!menu_items[@]}"; do
+        echo "$((i+1)). ${menu_items[i]}"
+    done
+    echo "0. Kilépés"
+    
+    read -p "Szám: " choice
+    
+    if [[ "$choice" == "0" ]]; then
+        echo "Kilépés..."
+        exit 0
+    fi
+    
+    if [[ "$choice" -ge 1 && "$choice" -le ${#files[@]} ]]; then
+        echo "Indítás: ${menu_items[$((choice-1))]}"
+        "${files[$((choice-1))]}"
+    else
+        echo "Érvénytelen választás, próbáld újra."
+    fi
+    
+    echo ""
+done
