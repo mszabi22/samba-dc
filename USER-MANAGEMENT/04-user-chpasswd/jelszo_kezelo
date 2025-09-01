@@ -1,28 +1,19 @@
 #!/bin/bash
-	clear
+    clear
 
 # Menüpontok nevei, amik megjelennek a felhasználónak
 menu_items=(
-    "Diák jelszócsere"
-    "Gazdasági jelszócsere"
-    "Osztály jelszócsere"
-    "Tanárok jelszócsere"
-    "Technikai jelszócsere"
-    "Titkárság jelszócsere"
+    "Keresés, majd jelszócsere"
+    "Teljes osztály jelszócsere"
 )
 
 # A hozzájuk tartozó fájlok (teljes útvonal is lehet)
 files=(
-    "/etc/scripts/USER-MANAGEMENT/04-user-chpasswd/diak_jelszocsere"
-    "/etc/scripts/USER-MANAGEMENT/04-user-chpasswd/gazdasagi_jelszocsere"
+    "/etc/scripts/USER-MANAGEMENT/04-user-chpasswd/jelszocsere"
     "/etc/scripts/USER-MANAGEMENT/04-user-chpasswd/osztaly_jelszocsere"
-    "/etc/scripts/USER-MANAGEMENT/04-user-chpasswd/tanar_jelszocsere"
-    "/etc/scripts/USER-MANAGEMENT/04-user-chpasswd/technikai_jelszocsere"
-    "/etc/scripts/USER-MANAGEMENT/04-user-chpasswd/titkarsag_jelszocsere"
 )
 
 while true; do
-echo "* * * Jelszó kezelő * * *"
     echo "Válassz egy menüpontot:"
     
     for i in "${!menu_items[@]}"; do
