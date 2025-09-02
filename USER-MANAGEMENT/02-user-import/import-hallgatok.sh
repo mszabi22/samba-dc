@@ -51,7 +51,7 @@ echo ""
 echo "Üdvözlettel:"
 echo "rendszergazda"
 echo ""
-) | mail -s "Windows jelszó" $username@domain.hu 
+) | USER=root mail -s "Windows jelszó" $username@domain.hu 
     
 sleep 1    
     

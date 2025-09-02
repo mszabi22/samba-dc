@@ -36,7 +36,7 @@ echo "HOME létrehozása..."
     mkdir -p /share/home/diak/$username; chmod -R 777 /share/home/diak/$username;
     chown -R "root:root" /share/home/diak/$username
 
-    echo "$group,$username,$JELSZO" >> new-worker.csv
+    echo "$osztaly,$username,$JELSZO" >> new-worker.csv
     
 (
 echo "Kedves Diákunk!"
@@ -51,7 +51,7 @@ echo ""
 echo "Üdvözlettel:"
 echo "rendszergazda"
 echo ""
-) | mail -s "Windows jelszó" $username@diak.domain.hu 
+) | USER=root mail -s "Windows jelszó" $username@diak.domain.hu 
 
 sleep 1     
     

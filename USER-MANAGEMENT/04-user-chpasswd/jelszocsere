@@ -77,7 +77,7 @@ echo ""
 echo "Üdvözlettel:"
 echo "Szabolcs"
 
-) | mail -s "[CNK] Új Windows jelszó" -b mszabi@domain.hu $FELHASZNALONEV@domain.hu
+) | USER=root mail -s "[CNK] Új Windows jelszó" -b mszabi@domain.hu $FELHASZNALONEV@domain.hu
     
     
 fi
@@ -98,5 +98,5 @@ echo ""
 echo "Üdvözlettel:"
 echo "rendszergazda"
 
-) | mail -s "[CNK] Új Windows jelszó" -b mszabi@domain.hu $FELHASZNALONEV@diak.domain.hu
+) | USER=root mail -s "[CNK] Új Windows jelszó" -b mszabi@domain.hu $FELHASZNALONEV@diak.domain.hu
 fi
